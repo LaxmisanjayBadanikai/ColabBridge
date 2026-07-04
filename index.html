@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ColabBridge Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- ============================================
+    SIDEBAR
+    ============================================ -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect x="2" y="2" width="28" height="28" rx="6" stroke="currentColor" stroke-width="2"/>
+                    <path d="M10 12L16 18L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10 18L16 24L22 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>ColabBridge</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12H21M3 6H21M3 18H21"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-link active" data-page="dashboard">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-link" data-page="health">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 8V12L14 14"/>
+                </svg>
+                <span>Health</span>
+            </a>
+            <a href="#" class="nav-link" data-page="sessions">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                    <path d="M8 21H16M12 17V21"/>
+                </svg>
+                <span>Sessions</span>
+            </a>
+            <a href="#" class="nav-link" data-page="editor">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                </svg>
+                <span>Editor</span>
+            </a>
+            <a href="#" class="nav-link" data-page="upload">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15"/>
+                    <path d="M17 8L12 3L7 8"/>
+                    <path d="M12 3V15"/>
+                </svg>
+                <span>Upload</span>
+            </a>
+            <a href="#" class="nav-link" data-page="download">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15"/>
+                    <path d="M7 10L12 15L17 10"/>
+                    <path d="M12 15V3"/>
+                </svg>
+                <span>Download</span>
+            </a>
+            <a href="#" class="nav-link" data-page="settings">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"/>
+                </svg>
+                <span>Settings</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="api-status">
+                <span class="status-dot" id="apiStatusDot"></span>
+                <span id="apiStatusText">Checking...</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ============================================
+    MAIN CONTENT
+    ============================================ -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12H21M3 6H21M3 18H21"/>
+                </svg>
+            </button>
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="top-bar-actions">
+                <button class="btn-icon" id="refreshBtn" aria-label="Refresh">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4V10H17"/>
+                        <path d="M1 20V14H7"/>
+                        <path d="M3.51 9C4.83 5.18 8.56 2 13 2C18.52 2 23 6.48 23 12"/>
+                        <path d="M20.49 15C19.17 18.82 15.44 22 11 22C5.48 22 1 17.52 1 12"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content Container -->
+        <div class="page-content" id="pageContent">
+            <!-- Pages will be rendered here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- ============================================
+    TOAST NOTIFICATIONS
+    ============================================ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ============================================
+    JAVASCRIPT
+    ============================================ -->
+    <script src="script.js"></script>
+</body>
+</html>
